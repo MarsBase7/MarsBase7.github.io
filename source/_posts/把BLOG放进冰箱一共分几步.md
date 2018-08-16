@@ -69,7 +69,7 @@ config.vm.network "private_network", ip: "192.168.33.91"
 * 更新repo，安装开箱必备的软件（centos的初始环境就是那么<del>任性</del>纯净）
 * nodejs的安装建议直接下载[软件包](https://nodejs.org/en/download/)，目前稳定版本是8，用curl和yum的方式貌似不太靠谱
 * 解压缩并且放到/usr/local目录下， 给系统指定node的路径并加载（下文有建议方案）
-* 用npm安装hexo和git插件，在本地初始化并创建包含整个博客配置、模版、文章等等所有文件的目录，目录的名字可以随客官高兴，这里七叔用blogBase举例
+* 用npm安装hexo和git插件，在本地初始化并创建包含整个博客配置、模版、文章等等所有文件的目录，目录的名字可以随客官高兴，这里七叔用**blogBase**举例
 
 ```
 $ sudo yum update
@@ -106,8 +106,42 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 
 # 2. 线上准备
 
+上一阶段完成了博文编辑框架的搭建，您已经可以在自己的电脑上看到博客的样子，满心喜悦，自恋爆棚，“但是那帮狐朋狗友们看不到啊？！”，您又沉浸在了装X未遂的万分悲痛之中。莫捉急，接下来的内容就是把博客放到公网上去。
+
+### 2.1 GitHub搭小窝
+
+其实放到公网上有很多方案，例如租台云服务器，把操作系统部署、数据库安装、web服务安装、代码调试等等一顿全撸的折腾方案，当然也有零成本超便捷的躺鸡方案，七叔认为用Github+Hexo就有这么神奇。
+
+首先，七叔默认您已经有了[GitHub](https://github.com)账号，并且掌握了git的基本使用（如果还没咋接触过git，可以查看[帮助](https://help.github.com)，这么牛的工具了解一下），那么请登录，接下来只需要在repository管理页面上新建一个以`NAME.github.io`作为固定格式命名的repository就完事儿了。有点拗口哈，请看下图：
+
+{% asset_img github_set.png %}
+
+完成后在本地`blogBase`目录下进行如下配置，双引号内填入您的账号相关信息：
+```
+$ git config --global user.email "you@example.com"
+$ git config --global user.name "Your Name"
+```
+接下来，3条命令开启线上博客之旅：
+```
+$ hexo clean
+$ hexo generate
+$ hexo deploy
+```
+根据git提示填入账号密码，等待部署完成。在浏览器上打开GitHub的blog地址 https://NAME.github.io ，duang～，您的博客已经出现了公网上！
+
+记下clone地址`https://github.com/NAME/NAME.github.io.git`，
+
+### 2.2 穿上私有域名
+
 
 {% asset_img cname_set.png %}
+
+### 2.3 搜索引擎收录
+
+
+
+
+
 
 
 
