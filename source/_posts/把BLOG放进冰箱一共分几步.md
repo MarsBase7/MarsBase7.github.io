@@ -18,12 +18,9 @@ tags:
 <br/>
 # 0. 为何而建
 
-[知乎](https://www.zhihu.com/)、[简书](https://www.jianshu.com)、[掘金](https://juejin.im)、[思否](https://segmentfault.com)等等，如今写博文的基地挺多，注册一个账号就能开始码，Why Not？
-
+[知乎](https://www.zhihu.com/)、[简书](https://www.jianshu.com)、[掘金](https://juejin.im)、[思否](https://segmentfault.com)等等，如今写博文的基地挺多，注册一个账号就能开始码，Why Not?
 <del>因为，幸福都是奋斗出来的！</del> 人生在于体验，七叔比较好这一口，所以选择自己建站，既能练个手又能依自己喜好定页面的样式，何乐而不为。
-
 啥？您说<del>如何在网上装X</del>分享的问题？生成sitemap提交给百度收录呀，可以一条龙了有没有！
-
 本篇就不涉及搜索引擎收录问题了哈，大而全的文章太拖泥带水，怕您没耐心看。
 
 <br/>
@@ -98,6 +95,8 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 然后，当您在浏览器上打开 http://192.168.33.91:4000/ 这个地址，看到这个画面：
 
 {% asset_img hexo_init_index.png %}
+
+{% asset_img cname_set.png %}
 
 那么恭喜您，本地安装已经完成了！
 
