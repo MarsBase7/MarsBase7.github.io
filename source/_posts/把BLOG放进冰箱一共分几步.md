@@ -19,7 +19,7 @@ marsbase.xyz = GitHub + Hexo + Vagrant + Atom
 
 # 0. 为何而建
 
-[知乎](https://www.zhihu.com/)、[简书](https://www.jianshu.com)、[掘金](https://juejin.im)、[思否](https://segmentfault.com)等等，如今写blog的基地挺多，注册一个账号就能开始码码码，如此快餐，Why Not? <del>因为，幸福都是奋斗出来的！</del> 人生在于体验，七叔比较好这一口，所以选择自己建站，既能练个手又能依自己喜好定页面的样式，何乐而不为。啥？您说自己建站<del>如何在网上装X</del>如何分享的问题？喏，生成sitemap提交给搜索引擎收录呀，感觉一条龙了有没有！
+[知乎](https://www.zhihu.com/)、[简书](https://www.jianshu.com)、[掘金](https://juejin.im)、[思否](https://segmentfault.com)等等，如今写blog的基地挺多，注册一个账号就能开始码码码，如此快餐，Why Not? <del>因为，幸福都是奋斗出来的！</del> 人生在于体验，七叔比较好这一口，所以选择自己建站，既能练个手又能依自己喜好定页面的样式，何乐而不为。啥？您说自己建站<del>如何在网上当网红装X</del>如何分享的问题？喏，生成sitemap提交给搜索引擎收录呀，感觉一条龙了有没有！
 
 本篇就把整个过程撸一遍，可能篇幅上冗长，祝福您有那个耐心看完……
 
@@ -112,7 +112,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 
 其实放到公网上有很多方案，例如租台云服务器，把操作系统部署、数据库安装、web服务安装、代码调试等等一顿全撸的折腾方案，当然也有零成本超便捷的躺鸡方案，七叔认为用Github+Hexo就有这么神奇。
 
-首先，七叔默认您已经有了[GitHub](https://github.com)账号，并且掌握了git的基本使用（如果还没咋接触过git，可以查看[帮助](https://help.github.com)，这么牛的工具了解一下），那么请登录，接下来只需要在repository管理页面上新建一个以`NAME.github.io`作为固定格式命名的repository就完事儿了。有点拗口哈，请看下图：
+首先，七叔默认您已经有了[GitHub](https://github.com)账号，并且掌握了git的基本使用（如果还没咋接触过git，可以查看[帮助](https://help.github.com)，这么牛的工具了解一下），那么请登录，接下来只需要在repository管理页面上新建一个以`NAME.github.io`作为固定格式命名且`NAME`就是您GitHub账号名的repository就完事儿了。有点拗口哈，请看下图：
 
 {% asset_img github_set.png %}
 
@@ -127,18 +127,34 @@ $ hexo clean
 $ hexo generate
 $ hexo deploy
 ```
-根据git提示填入账号密码，等待部署完成。在浏览器上打开GitHub的blog地址 https://NAME.github.io ，duang～，您的博客已经出现了公网上！
-
-记下clone地址`https://github.com/NAME/NAME.github.io.git`，
+根据git提示填入账号密码，等待部署完成。在浏览器上打开GitHub的blog地址 https://NAME.github.io ，duang~~，您的博客已经出现在了公网上！
 
 ### 2.2 穿上私有域名
 
+现在您的狐朋狗友们已经可以看到您的博客，但是您觉得URL拖着`github.io`的小尾巴不够个性，fine，来个私有域名吧。
+
+七叔默认您已经有了自己的域名并且完成了备案。如果您还没有这些，您可以在自己认为靠谱的公有云（七叔目前用过阿里云和腾讯云）网站上注册一个心仪的域名并提交备案申请，这里七叔给您泼个冷水，备案流程略费神，如果对于URL个性化的意愿不太强烈，那就先用GitHub的地址凑合着吧。
+
+本博客的域名`marsbase.xyz`是七叔在腾讯云上注册的，下图就是在腾讯云上对该域名进行解析设置：
 
 {% asset_img cname_set.png %}
+
+然后回到本地，在`blogBase/source/`目录下新建一个`CNAME`文件（注意文件名必须大写），文件内容为私有域名地址。新建文件后再次进行部署：
+```
+$ echo 'marsbase.xyz' > CNAME
+$ hexo clean && hexo g && hexo d
+```
+
+好了，现在可以打开您的域名，duang~~，再次出现了您的博客，您的专属博客！
 
 ### 2.3 搜索引擎收录
 
 
+
+```
+npm install hexo-generator-sitemap --save
+npm install hexo-generator-baidu-sitemap --save
+```
 
 
 
@@ -147,7 +163,7 @@ $ hexo deploy
 
 # 3. 开始写吧
 
-
+记下clone地址`https://github.com/NAME/NAME.github.io.git`，
 
 hexo官方有很多不错的[themes](https://hexo.io/themes/)可以选择，本站就是套用了其中一个非常简洁的叫做[apollo](https://github.com/pinggod/hexo-theme-apollo)的模版。其他值得推荐的themes，如[next](https://github.com/theme-next/hexo-theme-next)是个功能很强大的模版，还有[cactus](https://github.com/probberechts/hexo-theme-cactus)是全响应式、多种素色可换、清爽型模版，<del>也是七叔的菜</del>。
 
