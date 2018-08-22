@@ -139,9 +139,9 @@ $ hexo deploy
 
 {% asset_img cname_set.png %}
 
-然后回到本地，在`blogBase/source/`目录下新建一个`CNAME`文件（注意文件名必须大写），文件内容为私有域名地址。新建文件后再次进行部署：
+然后回到本地，在`blogBase/source/`目录下新建一个`CNAME`文件（注意文件名必须大写），文件内容为私有域名地址（下面以七叔的域名举例）。新建文件后再次进行部署：
 ```
-$ echo 'marsbase.xyz' > CNAME
+$ echo 'www.marsbase.xyz' > CNAME
 $ hexo clean && hexo g && hexo d
 ```
 
@@ -154,6 +154,7 @@ $ hexo clean && hexo g && hexo d
 ```
 npm install hexo-generator-sitemap --save
 npm install hexo-generator-baidu-sitemap --save
+npm install hexo-baidu-url-submit --save
 ```
 
 
