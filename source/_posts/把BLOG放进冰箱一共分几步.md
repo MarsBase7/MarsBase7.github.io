@@ -26,7 +26,7 @@ marsbase.xyz = GitHub + Hexo + Vagrant + Atom
 
 # 1. 本地准备
 
-七叔是在Mac上虚拟ubuntu/trusty64进行环境部署的，因此下文都是基于这个环境写。Windows用户也可以看，因为装好虚拟机之后的步骤都是一样的。那麽，七叔要开车了……
+七叔是在Mac上虚拟Centos/7进行环境部署的，因此下文都是基于这个环境写。Windows用户也可以看，因为装好虚拟机之后的步骤都是一样的。那麽，七叔要开车了……
 
 ### 1.1 直接部署还是包个虚拟机？
 
@@ -108,7 +108,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 
 上一阶段完成了博文编辑框架的搭建，您已经可以在自己的电脑上看到博客的样子，满心喜悦，自恋爆棚，“但是那帮狐朋狗友们看不到啊？！”，您又沉浸在了装X未遂的万分悲痛之中。莫捉急，接下来的内容就是把博客放到公网上去。
 
-### 2.1 GitHub搭小窝
+### 2.1 GitHub借坑搭窝
 
 其实放到公网上有很多方案，例如租台云服务器，把操作系统部署、数据库安装、web服务安装、代码调试等等一顿全撸的折腾方案，当然也有零成本超便捷的躺鸡方案，七叔认为用Github+Hexo就有这么神奇。
 
@@ -116,10 +116,17 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 
 {% asset_img github_set.png %}
 
-完成后在本地`blogBase`目录下进行如下配置，双引号内填入您的账号相关信息：
+完成后在本地`blogBase`目录下进行git相关配置，双引号内填入您的账号相关信息：
 ```
 $ git config --global user.email "you@example.com"
 $ git config --global user.name "Your Name"
+```
+修改`_config.yml`文件的deploy配置：
+```
+deploy:
+  type: git
+  repo: https://github.com/YOURNAME/YOURNAME.github.io.git
+  branch: master
 ```
 接下来，3条命令开启线上博客之旅：
 ```
@@ -196,20 +203,59 @@ Hey, have U heard of **THEME**s, homie ?
 
 没错，hexo官网上有很多不错的[themes](https://hexo.io/themes/)可以选择，各种口味，总有一款适合您。其中值得推荐的，如[next](https://github.com/theme-next/hexo-theme-next)是个功能很全很强大的主题，还有[cactus](https://github.com/probberechts/hexo-theme-cactus)是全响应式、多种素色可换、清爽型主题，<del>都是七叔的菜</del>。但七叔最终还是选择了hexo的默认主题landscape，相对简洁、功能全面，更主要的是，花太多时间在主题样式的研究上，不如将博文好好打磨成精品。
 
-有精力自己改主题的同学，七叔用的landscape就有先行者写了详细[调教攻略](https://www.jianshu.com/p/b96fd206571a)，供参考。据说相当多的hexo主题是在landscape基础上改出来的，足见其。
+更换主题的操作很简单（以next为例）：
+* 将主题下载到`blogBase/themes`目录下
+* 修改`blogBase/_config.yml`文件，指定要使用的主题
+
+```
+$ git clone https://github.com/theme-next/hexo-theme-next themes/next
+$ sed -ie 's/theme: landscape/theme: next/g' _config.xml
+```
+
+有精力自己改主题的同学，七叔用的landscape就有先行者写了详细[调教攻略](https://www.jianshu.com/p/b96fd206571a)，供参考。据说相当多的hexo主题是在landscape基础上改出来的，足见其经典。
+
+* [x]巧笑倩兮，美目盼兮
 
 ### 3.3 多台设备切换怎么破
 
-首先，哥/姐，您好有钱，可以在多台设备上切换。
+首先，哥/姐，您好有钱，可以在多台设备上切换。笔记本上写了标题和提纲，换台式机截几个图写几段code，出门旅游不忘在macbook air上留住当时的好心情……爽哉爽哉！
 
+言归正传，多设备之间需要同步的其实就是本地hexo主文件夹下的文件，那么思路就相对明确了：
+* 对`blogBase/`目录进行git初始化并新建分支（分支名用**hexoBase**举例）
+* 将新分支添加到您在2.1阶段创建的repository下
+* 从A设备push到GitHub，
+* 切换到B设备，首次clone，之后pull到本地
+* 切换到C设备、D设备……N设备，均同上
 
+#在A设备上操作
+```
+$ git init
+$ git add .
+$ git commit
+$ git branch hexoBase
+$ git checkout hexoBase
+$ git remote add origin https://github.com/YOURNAME/YOURNAME.github.io.git
+$ git push origin hexoBase
+```
+#在B设备上操作
+```
+$ git clone https://github.com/YOURNAME/YOURNAME.github.io.git
+$ git pull origin hexoBase
+```
+用GitHub实现多设备同步的方式需要您对git的原理及操作有一定的了解，不小心容易自挖版本覆盖的陷阱，尝鲜的旁友谨慎选择。
 
-记下clone地址`https://github.com/NAME/NAME.github.io.git`，
-
-
-
+* [x]刀枪剑戟斧钺钩叉，烧饼馒头包子麻花
 
 ---
 
 # Summary
-片尾装一把洋气，做个总结：
+写到最后了，容许七叔在片尾装一把洋气，对全文做个聚合：
+
+|KEY|Num|
+|-|-|
+|执行Bash命令|42条|
+|安装必要软件|8个|
+|修改配置文件|3个|
+|操作涉及网站|4个|
+
+收工，希望本文对您有所帮助，祝开博愉快！God bless your BLOG！
