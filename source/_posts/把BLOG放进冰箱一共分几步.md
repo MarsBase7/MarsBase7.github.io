@@ -152,33 +152,31 @@ $ hexo clean && hexo g && hexo d
 您对于狐朋狗友们的膜拜还不够满意，您想让狐朋的狐朋们以及狗友的狗友们都能在搜索引擎上搜寻到您的神采飞扬。对于如此不要脸的需求，七叔认为`0 error(s),0 warning(s)`。
 
 搜索引擎收录其实是个挺讲究的事，对于想要精心经营个人站点的同学，值得深入探究。本篇只涉及搜索引擎收录的几个必要的操作过程，不进行详细展开。
-* [百度站长](https://ziyuan.baidu.com/)、[谷歌Search Console](https://www.google.com/webmasters/tools/home?hl=zh-CN) 都可以进行收录（谷歌该怎么登录你懂的），收录前有必要的域名验证环节，跟着提示要求办就行了。
+* [百度站长](https://ziyuan.baidu.com/)、[Google Search Console](https://www.google.com/webmasters/tools/home?hl=zh-CN) 都可以进行收录（谷歌该怎么登录你懂的），收录前有必要的域名验证环节，跟着提示要求办就行了。
 * **非常抱歉地通知您：** 百度无法收录`*.github.*`相关域名，私有域名映射之后能否被收录七叔没尝试，如果想被百度收录，建议将博客部署到[coding](https://coding.net/)上，coding的使用习惯与github类似，是个相当不错的国产代码托管平台。
-* 七叔是把本站收录到了Search Console上，收录效率非常快，当天就能在google上搜到`www.marsbase.xyz`
+* 七叔是把本站收录到了Goole Search Console上，收录效率非常快，当天就能在google上搜到`www.marsbase.xyz`
 
 {% asset_img search_console.png %}
 
-
+搜索引擎收录过程中需要提供个人站点地图，因此收录之前建议安装sitemap插件，安装完插件之后，每次hexo部署都会在`blogBase/public/`目录下自动生成`sitemap.xml`文件：
 ```
-npm install hexo-generator-sitemap --save
-npm install hexo-generator-baidu-sitemap --save
-npm install hexo-baidu-url-submit --save
+$ npm install hexo-generator-sitemap --save
 ```
 
-
-
-
+线上准备部分到此告一段落，往后余生，您已走上了奔向“网红”的康庄大道……
 
 
 # 3. 开始写吧
 
-记下clone地址`https://github.com/NAME/NAME.github.io.git`，
+准备工作哔哔了那么多，**写**才是博客的核心。
 
-hexo官方有很多不错的[themes](https://hexo.io/themes/)可以选择，本站就是套用了其中一个非常简洁的叫做[apollo](https://github.com/pinggod/hexo-theme-apollo)的模版。其他值得推荐的themes，如[next](https://github.com/theme-next/hexo-theme-next)是个功能很强大的模版，还有[cactus](https://github.com/probberechts/hexo-theme-cactus)是全响应式、多种素色可换、清爽型模版，<del>也是七叔的菜</del>。
+### 3.1 <del>MA</del>SSAGE该用牛刀
 
+上文所搭建的环境，需要用Markdown编辑博文，而且Markdown也是目前比较流行的写作语言，它可以通过简单的标记语法使文本内容具备相应的格式和形式，有很多商业的和开源的文本编辑器支持Markdown语法。这些编辑器各有千秋，七叔不打算装模作样做个对比分析，因为用过了才知道。
 
-那么现在说到编辑器了，七叔隆重推荐编写本文所采用的markdown神器[Atom](https://atom.io/)。此前编写github项目文档的时候用过几个编辑器，但是接触了Atom之后感觉真的好用，强力推荐！
-安装完Atom之后，建议安装以下这些插件：
+七叔只将编写本文所采用的编辑器（估计以后也只用它）推荐给大家，Markdown神器——[Atom](https://atom.io/)了解一下。此前七叔在编写github项目文档的时候用过几个编辑器（包括iA Writer），但是接触了Atom之后感觉真的好用，强力推荐！
+
+下载&安装完Atom之后，建议安装以下这些插件（ **setting -> install** ）：
 * `markdown-preview-plus`
 * `markdown-scroll-sync`
 * `language-markdown`
@@ -186,4 +184,32 @@ hexo官方有很多不错的[themes](https://hexo.io/themes/)可以选择，本�
 
 此外还有`markdown-image-paste`图片粘贴插件也是相当的牛X，但是由于其执行方式与hexo的图片路径匹配方式不太一致，所以这里就不作为重点推荐了。
 
-想自己改模板？没问题呀，七叔用的landscape就有大牛写了详细调教[攻略](https://www.jianshu.com/p/b96fd206571a)
+* [x]工欲善其事，必先利其器
+
+### 3.2 BLOG可以更个性
+
+“博客的样式我看厌了” “我想要换另类的风格” “给本宫来个极致的简洁”
+
+Hey, have U heard of **THEME**s, homie ?
+
+{% asset_img hexo_themes.png %}
+
+没错，hexo官网上有很多不错的[themes](https://hexo.io/themes/)可以选择，各种口味，总有一款适合您。其中值得推荐的，如[next](https://github.com/theme-next/hexo-theme-next)是个功能很全很强大的主题，还有[cactus](https://github.com/probberechts/hexo-theme-cactus)是全响应式、多种素色可换、清爽型主题，<del>都是七叔的菜</del>。但七叔最终还是选择了hexo的默认主题landscape，相对简洁、功能全面，更主要的是，花太多时间在主题样式的研究上，不如将博文好好打磨成精品。
+
+有精力自己改主题的同学，七叔用的landscape就有先行者写了详细[调教攻略](https://www.jianshu.com/p/b96fd206571a)，供参考。据说相当多的hexo主题是在landscape基础上改出来的，足见其。
+
+### 3.3 多台设备切换怎么破
+
+首先，哥/姐，您好有钱，可以在多台设备上切换。
+
+
+
+记下clone地址`https://github.com/NAME/NAME.github.io.git`，
+
+
+
+
+---
+
+# Summary
+片尾装一把洋气，做个总结：
