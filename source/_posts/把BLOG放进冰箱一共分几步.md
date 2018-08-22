@@ -149,6 +149,14 @@ $ hexo clean && hexo g && hexo d
 
 ### 2.3 搜索引擎收录
 
+您对于狐朋狗友们的膜拜还不够满意，您想让狐朋的狐朋们以及狗友的狗友们都能在搜索引擎上搜寻到您的神采飞扬。对于如此不要脸的需求，七叔认为`0 error(s),0 warning(s)`。
+
+搜索引擎收录其实是个挺讲究的事，对于想要精心经营个人站点的同学，值得深入探究。本篇只涉及搜索引擎收录的几个必要的操作过程，不进行详细展开。
+* [百度站长](https://ziyuan.baidu.com/)、[谷歌Search Console](https://www.google.com/webmasters/tools/home?hl=zh-CN) 都可以进行收录（谷歌该怎么登录你懂的），收录前有必要的域名验证环节，跟着提示要求办就行了。
+* **非常抱歉地通知您：** 百度无法收录`*.github.*`相关域名，私有域名映射之后能否被收录七叔没尝试，如果想被百度收录，建议将博客部署到[coding](https://coding.net/)上，coding的使用习惯与github类似，是个相当不错的国产代码托管平台。
+* 七叔是把本站收录到了Search Console上，收录效率非常快，当天就能在google上搜到`www.marsbase.xyz`
+
+{% asset_img search_console.png %}
 
 
 ```
