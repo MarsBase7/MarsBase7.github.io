@@ -5,15 +5,19 @@
   
 
   
-  <title>归档 | MarsBase</title>
+  <title>BLOG站搭建(番外) ——服务器的准备 | MarsBase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MarsBase">
-<meta property="og:url" content="http://www.marsbase.xyz/archives/index.html">
+  <meta name="description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BLOG站搭建(番外) ——服务器的准备">
+<meta property="og:url" content="http://www.marsbase.xyz/BLOG站搭建-番外-——服务器的准备.html">
 <meta property="og:site_name" content="MarsBase">
+<meta property="og:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-26T11:48:30.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MarsBase">
+<meta name="twitter:title" content="BLOG站搭建(番外) ——服务器的准备">
+<meta name="twitter:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
   
     <link rel="alternate" href="/atom.xml" title="MarsBase" type="application/atom+xml">
   
@@ -64,78 +68,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/BLOG站搭建-番外-——服务器的准备.html" class="archive-article-date">
-  <time datetime="2018-09-26T03:27:31.000Z" itemprop="datePublished">9月 26</time>
+        <section id="main"><article id="post-BLOG站搭建-番外-——服务器的准备" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/BLOG站搭建-番外-——服务器的准备.html" class="article-date">
+  <time datetime="2018-09-26T03:27:31.000Z" itemprop="datePublished">2018-09-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/BLOG站搭建-番外-——服务器的准备.html">BLOG站搭建(番外) ——服务器的准备</a>
+    <h1 class="article-title" itemprop="name">
+      BLOG站搭建(番外) ——服务器的准备
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/5分钟拥有私人BLOG站.html" class="archive-article-date">
-  <time datetime="2018-08-25T09:01:43.000Z" itemprop="datePublished">8月 25</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/5分钟拥有私人BLOG站.html">5分钟拥有私人BLOG站</a>
-    </h1>
-  
+        <p>《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。</p>
+<a id="more"></a>
+<hr>
+<p><br><br>七叔是在Mac上虚拟Centos/7进行环境部署的，因此下文都是基于这个环境写。Windows用户也可以看，因为装好虚拟机之后的步骤都是一样的。那麽，七叔要开车了……</p>
+<h2 id="直接部署还是包个虚拟机？"><a href="#直接部署还是包个虚拟机？" class="headerlink" title="直接部署还是包个虚拟机？"></a>直接部署还是包个虚拟机？</h2><p>这个问题没有唯一答案，视具体情况决定。七叔这样考虑：</p>
+<ul>
+<li>如果物理机环境比较简单，偏运营/设计类取向，一般不需要用CLI，那么建议打开terminal直接安装在Mac上（windows可用git-bash），一把梭；</li>
+<li>如果是偏猿/媛取向，七叔掐指算您的环境一定比较复杂，Python/g++/JDK ···，现在为了搭博客再来个npm（js系玩家请忽略），233，<strong>推荐尝一下Vagrant吧</strong>。</li>
+</ul>
+<h2 id="Vagrant极简部署虚拟机"><a href="#Vagrant极简部署虚拟机" class="headerlink" title="Vagrant极简部署虚拟机"></a>Vagrant极简部署虚拟机</h2><p><a href="https://www.vagrantup.com" target="_blank" rel="noopener">Vagrant</a>是基于Ruby的虚拟机管理工具，比较推荐的组合是与<a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a>搭配，当这两个都安装完成后，执行如下操作：</p>
+<ul>
+<li>创建用来放虚拟机配置文件以及控制的目录</li>
+<li>初始化配置文件</li>
+<li>修改配置文件（下文有建议方案）</li>
+<li>启动虚拟机</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/把BLOG放进冰箱一共分几步.html" class="archive-article-date">
-  <time datetime="2018-08-17T07:59:59.000Z" itemprop="datePublished">8月 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/把BLOG放进冰箱一共分几步.html">把BLOG放进冰箱一共分几步</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.marsbase.xyz/BLOG站搭建-番外-——服务器的准备.html" data-id="cjmj369kj00019qjbmsoi0a46" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/5分钟拥有私人BLOG站.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">5分钟拥有私人BLOG站</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
