@@ -16,7 +16,7 @@
 <meta property="og:description" content="开门篇，七叔简历还没准备好，就先写写怎么搭的这个博客站吧。 As we know，搭建一个完整的博客站是个不小的工程，安装、部署一把梭，再快的速度，半天总是需要的。其实，博客的核心部分，通过例如Hexo这样的强大框架，真的可以在5分钟完成搭建。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.marsbase.xyz/5分钟拥有私人BLOG站/hexo_init_index.png">
-<meta property="og:updated_time" content="2018-09-26T03:22:34.839Z">
+<meta property="og:updated_time" content="2018-09-26T07:14:15.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5分钟拥有私人BLOG站">
 <meta name="twitter:description" content="开门篇，七叔简历还没准备好，就先写写怎么搭的这个博客站吧。 As we know，搭建一个完整的博客站是个不小的工程，安装、部署一把梭，再快的速度，半天总是需要的。其实，博客的核心部分，通过例如Hexo这样的强大框架，真的可以在5分钟完成搭建。">
@@ -94,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>开门篇，七叔简历还没准备好，就先写写怎么搭的这个博客站吧。</p>
-<p>As we know，搭建一个完整的博客站是个不小的工程，安装、部署一把梭，再快的速度，半天总是需要的。其实，博客的核心部分，通过例如Hexo这样的强大框架，真的可以在5分钟完成搭建。</p>
+<p>As we know，搭建一个完整的博客站是个不小的工程，安装、部署一把梭，再快的速度，半天总是需要的。其实，博客的核心部分，通过例如<strong>Hexo</strong>这样的强大框架，真的可以在5分钟完成搭建。</p>
 <a id="more"></a>
 <hr>
 <p><br></p>
@@ -115,31 +115,31 @@
 <p><br></p>
 <h2 id="5分钟记时开始……"><a href="#5分钟记时开始……" class="headerlink" title="5分钟记时开始……"></a>5分钟记时开始……</h2><p>博客核心部分的搭建其实是“从0到1”的过程，主要包含下面5个简单的步骤：</p>
 <ul>
-<li>安装nvm</li>
-<li>安装nodejs</li>
-<li>安装hexo</li>
+<li>安装NVM</li>
+<li>安装NodeJS</li>
+<li>安装Hexo</li>
 <li>站点目录初始化</li>
 <li>站点启动测试</li>
 </ul>
 <p>平均每个步骤耗时在1分钟左右。本文接下来的内容，就是具体阐述每个步骤的实操经历。</p>
 <br>
 
-<h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><p>…… 1st min ……</p>
-<p><a href="https://nvmexpress.org/" target="_blank" rel="noopener">nvm</a>即<code>Node Version Manager</code>，是强大的nodejs管理工具，安装便捷，免除了在安装nodejs时需要手工下载、解压、配置等一堆麻烦费时的工作。是对博客搭建过程进行提速的关键。</p>
+<h3 id="安装NVM"><a href="#安装NVM" class="headerlink" title="安装NVM"></a>安装NVM</h3><p>…… 1st min ……</p>
+<p><a href="https://nvmexpress.org/" target="_blank" rel="noopener">NVM</a>即<code>Node Version Manager</code>，是强大的NodeJS管理工具，安装便捷，免除了在安装NodeJS时需要手工下载、解压、配置等一堆麻烦费时的工作。是对博客搭建过程进行提速的关键。</p>
 <p>使用以下命令进行安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure></p>
 <p>或者wget方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure></p>
 <p>安装完成后检查：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command -v nvm</span><br></pre></td></tr></table></figure></p>
 <p>如果返回的是<code>nvm: command not found</code>，可以执行<code>source ~/.bashrc</code>，然后再重复上一步检查操作，确认安装完成后可进行下一个步骤。</p>
 <br>
 
-<h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><p>…… 2nd min ……</p>
-<p>安装nodejs前，可以用nvm查看可安装的版本（非必要）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><p>…… 2nd min ……</p>
+<p>安装NodeJS前，可以用NVM查看可安装的版本（非必要）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote</span><br></pre></td></tr></table></figure></p>
 <p>建议挑选标注有<code>Latest LTS</code>字样的最新稳定版本开始安装，比如七叔使用的<code>v8.12.0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install v8.12.0</span><br></pre></td></tr></table></figure></p>
 <p>老套路，安装完成后检查：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
 <p>如果返回了版本号就表示安装完成，然后继续下一步操作。</p>
 <br>
 
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>…… 3rd min ……</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>…… 3rd min ……</p>
 <p>1条命令+1分钟等待即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
 <p>安装过程中可能会有报错，请根据报错提示操作，或重新执行上一条命令。未报错或报错消失后是<del>没完没了的</del>检查环节：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure></p>
 <p>如果返回了一堆包含了<code>hexo-cli</code>的软件包的版本号，就表示安装完成，go on……</p>
@@ -155,7 +155,21 @@
 <p>其实最后一个步骤就是整体的检查环节。</p>
 <p>在<code>myblog</code>目录下启动测试服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
 <p>正常情况下将有这样的返回（如有异常请根据提示处理或检查前面的步骤是否都正常完成）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
-<p>打开浏览器，访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> ，如果能看到这个画面，表示我们已经成功搭建了一个博客站：<br><img src="/5分钟拥有私人BLOG站/hexo_init_index.png"></p>
+<p>打开浏览器，访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> ，如果能看到这个画面，表示我们已经成功搭建了一个博客站：</p>
+<img src="/5分钟拥有私人BLOG站/hexo_init_index.png">
+<hr>
+<br>
+
+<h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2><p>本篇基于Hexo框架，在短短5分钟的时间内，从无到有完成了BLOG站核心部分的搭建，但是这样一个博客站还远没有达到实际可用的程度，有相当一部分的周边工作需要处理。</p>
+<p>如果对搭建自己的博客站有兴趣，又不太清楚该从何下手，那么本篇以及一系列番外篇或许/可能/大概/有点参考作用……</p>
+<h3 id="番外篇传送门（陆续补全中）："><a href="#番外篇传送门（陆续补全中）：" class="headerlink" title="番外篇传送门（陆续补全中）："></a>番外篇传送门（陆续补全中）：</h3><ul>
+<li>服务器的准备</li>
+<li>因特网部署</li>
+<li>搜索引擎收录</li>
+<li>关于“写”</li>
+<li>一些简单的配置</li>
+<li>多终端同步编辑</li>
+</ul>
 
       
     </div>
