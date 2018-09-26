@@ -7,17 +7,17 @@
   
   <title>BLOG站搭建(番外) ——服务器的准备 | MarsBase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
+  <meta name="description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BLOG站搭建(番外) ——服务器的准备">
 <meta property="og:url" content="http://www.marsbase.xyz/BLOG站搭建-番外-——服务器的准备.html">
 <meta property="og:site_name" content="MarsBase">
-<meta property="og:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
+<meta property="og:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-26T11:48:30.596Z">
+<meta property="og:updated_time" content="2018-09-26T14:08:59.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BLOG站搭建(番外) ——服务器的准备">
-<meta name="twitter:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。">
+<meta name="twitter:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
   
     <link rel="alternate" href="/atom.xml" title="MarsBase" type="application/atom+xml">
   
@@ -71,7 +71,7 @@
         <section id="main"><article id="post-BLOG站搭建-番外-——服务器的准备" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/BLOG站搭建-番外-——服务器的准备.html" class="article-date">
-  <time datetime="2018-09-26T03:27:31.000Z" itemprop="datePublished">2018-09-26</time>
+  <time datetime="2018-09-06T03:27:31.000Z" itemprop="datePublished">2018-09-06</time>
 </a>
     
   </div>
@@ -90,23 +90,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及虚拟机部署的推荐方案。</p>
+        <p>《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于<strong>Vagrant</strong>的虚拟机部署推荐方案。</p>
 <a id="more"></a>
 <hr>
-<p><br><br>七叔是在Mac上虚拟Centos/7进行环境部署的，因此下文都是基于这个环境写。Windows用户也可以看，因为装好虚拟机之后的步骤都是一样的。那麽，七叔要开车了……</p>
-<h2 id="直接部署还是包个虚拟机？"><a href="#直接部署还是包个虚拟机？" class="headerlink" title="直接部署还是包个虚拟机？"></a>直接部署还是包个虚拟机？</h2><p>这个问题没有唯一答案，视具体情况决定。七叔这样考虑：</p>
+<p>七叔是在Mac上虚拟Centos/7进行环境部署的（抱歉，七叔是红帽系），因此下文都是基于这个环境写。Windows用户也可以看，因为部署虚拟机的步骤基本都是一样的。那麽，七叔要开车了……</p>
+<br>
+
+<h2 id="直接部署还是包个虚拟机？"><a href="#直接部署还是包个虚拟机？" class="headerlink" title="直接部署还是包个虚拟机？"></a>直接部署还是包个虚拟机？</h2><p>这个<del>具备散群能力的</del>问题没有唯一答案，视具体情况决定。七叔简单粗暴地认为：</p>
 <ul>
 <li>如果物理机环境比较简单，偏运营/设计类取向，一般不需要用CLI，那么建议打开terminal直接安装在Mac上（windows可用git-bash），一把梭；</li>
 <li>如果是偏猿/媛取向，七叔掐指算您的环境一定比较复杂，Python/g++/JDK ···，现在为了搭博客再来个npm（js系玩家请忽略），233，<strong>推荐尝一下Vagrant吧</strong>。</li>
 </ul>
-<h2 id="Vagrant极简部署虚拟机"><a href="#Vagrant极简部署虚拟机" class="headerlink" title="Vagrant极简部署虚拟机"></a>Vagrant极简部署虚拟机</h2><p><a href="https://www.vagrantup.com" target="_blank" rel="noopener">Vagrant</a>是基于Ruby的虚拟机管理工具，比较推荐的组合是与<a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a>搭配，当这两个都安装完成后，执行如下操作：</p>
-<ul>
-<li>创建用来放虚拟机配置文件以及控制的目录</li>
-<li>初始化配置文件</li>
-<li>修改配置文件（下文有建议方案）</li>
-<li>启动虚拟机</li>
-</ul>
+<p>七叔估计，点开本篇的旁友们还是希望使用虚拟机进行部署的，因此选择问题就不展开讨论了。收！</p>
+<br>
 
+<h2 id="Vagrant极简部署虚拟机"><a href="#Vagrant极简部署虚拟机" class="headerlink" title="Vagrant极简部署虚拟机"></a>Vagrant极简部署虚拟机</h2><p><a href="https://www.vagrantup.com" target="_blank" rel="noopener">Vagrant</a>是基于Ruby的虚拟机管理工具，比较推荐的组合是与<a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a>搭配，当这两个都安装完成后，执行如下几步简单的操作即可完成虚拟机部署：</p>
+<h3 id="1-创建虚拟机配置目录并初始化"><a href="#1-创建虚拟机配置目录并初始化" class="headerlink" title="1. 创建虚拟机配置目录并初始化"></a>1. 创建虚拟机配置目录并初始化</h3><p>假设我们将虚拟机配置文件所在的目录取名为<code>blogVM</code>，进入该目录对vagrant配置文件初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir blogVM</span><br><span class="line">cd blogVM</span><br><span class="line">vagrant init centos/7</span><br></pre></td></tr></table></figure></p>
+<p>上述命令执行后，会在<code>blogVM</code>目录下生成<code>Vagrantfile</code>文件，该文件存放了虚拟机的启动配置信息，接下来对其进行修改。</p>
+<h3 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2. 修改配置文件"></a>2. 修改配置文件</h3><p>虚拟机配置文件有很多配置项可以修改，虚拟机启动时会根据配置项进行一系列的自动化安装部署，非常方便。为了配合博客站的需求快速使用，七叔在这里只推荐了内网配置项的修改（便于文件传输和修改），其他的很多配置项虽然不提及但也值得深入研究。</p>
+<p>使用任意编辑器修改<code>Vagrantfile</code>文件（例如vim）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Vagrantfile</span><br></pre></td></tr></table></figure></p>
+<p>在<code>Vagrantfile</code>文件中配置内网地址（ip地址自定）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.91&quot;</span><br></pre></td></tr></table></figure></p>
+<p>其他配置项就按默认的即可，对于博客站本地环境来说完全够用。</p>
+<h3 id="3-启动虚拟机"><a href="#3-启动虚拟机" class="headerlink" title="3. 启动虚拟机"></a>3. 启动虚拟机</h3><p>虚拟机的启动也非常简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up</span><br></pre></td></tr></table></figure></p>
+<p>由于Vagrant是基于box（可视为操作系统的镜像）来启动虚拟机，因此如果第一次启动，Vagrant会花费一定时间来下载这个box，当然我们也可以提前下载好，具体参阅<a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">官方box</a>。</p>
+<p>启动命令之后可以通过status命令检查启动状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant status</span><br></pre></td></tr></table></figure></p>
+<p>如果返回<code>running (virtualbox)</code>，就表示虚拟机已正常启动。</p>
+<p>随后，就可以ssh登录该虚拟机进行操作了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh</span><br></pre></td></tr></table></figure></p>
+<p>关于Vagrant命令的常用简单操作选项，可以执行<code>vagrant -h</code>查看，本篇就不再赘述。</p>
+<h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2>
       
     </div>
     <footer class="article-footer">
