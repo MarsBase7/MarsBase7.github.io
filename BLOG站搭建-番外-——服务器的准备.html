@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="MarsBase">
 <meta property="og:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-26T14:08:59.200Z">
+<meta property="og:updated_time" content="2018-09-30T03:31:36.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BLOG站搭建(番外) ——服务器的准备">
 <meta name="twitter:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
@@ -115,9 +115,35 @@
 <p>由于Vagrant是基于box（可视为操作系统的镜像）来启动虚拟机，因此如果第一次启动，Vagrant会花费一定时间来下载这个box，当然我们也可以提前下载好，具体参阅<a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">官方box</a>。</p>
 <p>启动命令之后可以通过status命令检查启动状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant status</span><br></pre></td></tr></table></figure></p>
 <p>如果返回<code>running (virtualbox)</code>，就表示虚拟机已正常启动。</p>
-<p>随后，就可以ssh登录该虚拟机进行操作了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh</span><br></pre></td></tr></table></figure></p>
+<p>随后，就可以直接登录该虚拟机进行操作了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh</span><br></pre></td></tr></table></figure></p>
 <p>关于Vagrant命令的常用简单操作选项，可以执行<code>vagrant -h</code>查看，本篇就不再赘述。</p>
-<h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2>
+<br>
+
+<h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2><p>这一部分比较有针对性，是centos7的官方box在第一次启动后，对于搭建博客站来说可能会遇到的一些小问题，其他的Linux版本也许会有同样的问题，仅做参考。</p>
+<ul>
+<li><strong>必要软件缺失的问题</strong></li>
+</ul>
+<p>第一次启动的centos7，有很多软件未安装，repo源也没更新。为了方便后续的博客站搭建，七叔推荐执行以下操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo yum install -y net-tools git vim wget ntp</span><br></pre></td></tr></table></figure></p>
+<p>部分软件安装完成后需要重启，例如ntp服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart ntpd</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>时区的问题</strong></li>
+</ul>
+<p>一般情况下，操作系统默认使用UTC，如果想调整到北京时间，可以执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure></p>
+<p>然后用<code>date</code>命令检查下时间是否调正确了。</p>
+<ul>
+<li><strong>中文显示异常的问题</strong></li>
+</ul>
+<p>当我们在创建博文的时候，文章的名称如果包含中文，默认情况下centos7的terminal会将这些中文显示成乱码。当然这个问题不会影响博文的正常显示，只不过可能会要了强迫症的命，233。要解决这个问题，只需安装相应的中文支持包即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install kde-l10n-Chinese</span><br><span class="line">sudo yum reinstall glibc-common</span><br></pre></td></tr></table></figure></p>
+<p>现在可以在terminal中看到正常的中文显示了，比如刚才的<code>date</code>命令就返回了中文显示的时间信息。</p>
+<ul>
+<li><strong>无法通过ssh命令远程登录的问题</strong></li>
+</ul>
+<p>这是centos7的初始安全策略，可以修改<code>/etc/ssh/sshd_config</code>文件的<code>PasswordAuthentication</code>参数为<code>yes</code>（默认为<code>no</code>）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure></p>
+<p>保存配置文件并重启sshd服务后就可以打开ssh远程登录功能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure></p>
+<p>centos7官方box带的初始账号密码都为<code>vagrant</code>，现在可以用该账号以及在初始化时配置的内网ip地址来测试验证ssh登录了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh vagrant@192.168.33.91</span><br><span class="line">vagrant@192.168.33.91&apos;s password: vagrant</span><br></pre></td></tr></table></figure></p>
+<hr>
+<br>
+
       
     </div>
     <footer class="article-footer">
