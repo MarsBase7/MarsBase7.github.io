@@ -5,18 +5,18 @@
   
 
   
-  <title>BLOG站搭建(番外) ——服务器的准备 | MarsBase</title>
+  <title>BLOG站搭建(番外1) ——服务器的准备 | MarsBase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BLOG站搭建(番外) ——服务器的准备">
-<meta property="og:url" content="http://www.marsbase.xyz/BLOG站搭建-番外-——服务器的准备.html">
+<meta property="og:title" content="BLOG站搭建(番外1) ——服务器的准备">
+<meta property="og:url" content="http://www.marsbase.xyz/BLOG站搭建-番外1-——服务器的准备.html">
 <meta property="og:site_name" content="MarsBase">
 <meta property="og:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-30T03:31:36.285Z">
+<meta property="og:updated_time" content="2018-10-06T09:06:27.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BLOG站搭建(番外) ——服务器的准备">
+<meta name="twitter:title" content="BLOG站搭建(番外1) ——服务器的准备">
 <meta name="twitter:description" content="《5分钟拥有私人BLOG站》的第一个番外篇，主要聊聊Hexo环境部署在本地还是虚拟机的问题，以及基于Vagrant的虚拟机部署推荐方案。">
   
     <link rel="alternate" href="/atom.xml" title="MarsBase" type="application/atom+xml">
@@ -68,9 +68,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-BLOG站搭建-番外-——服务器的准备" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-BLOG站搭建-番外1-——服务器的准备" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/BLOG站搭建-番外-——服务器的准备.html" class="article-date">
+    <a href="/BLOG站搭建-番外1-——服务器的准备.html" class="article-date">
   <time datetime="2018-09-06T03:27:31.000Z" itemprop="datePublished">2018-09-06</time>
 </a>
     
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      BLOG站搭建(番外) ——服务器的准备
+      BLOG站搭建(番外1) ——服务器的准备
     </h1>
   
 
@@ -96,12 +96,12 @@
 <p>七叔是在Mac上虚拟Centos/7进行环境部署的（抱歉，七叔是红帽系），因此下文都是基于这个环境写。Windows用户也可以看，因为部署虚拟机的步骤基本都是一样的。那麽，七叔要开车了……</p>
 <br>
 
-<h2 id="直接部署还是包个虚拟机？"><a href="#直接部署还是包个虚拟机？" class="headerlink" title="直接部署还是包个虚拟机？"></a>直接部署还是包个虚拟机？</h2><p>这个<del>具备散群能力的</del>问题没有唯一答案，视具体情况决定。七叔简单粗暴地认为：</p>
+<h2 id="直接部署还是包个虚拟机？"><a href="#直接部署还是包个虚拟机？" class="headerlink" title="直接部署还是包个虚拟机？"></a>直接部署还是包个虚拟机？</h2><p>这个<del>可能具备散群能力的</del>问题没有唯一答案，视具体情况决定。七叔简单粗暴地认为：</p>
 <ul>
 <li>如果物理机环境比较简单，偏运营/设计类取向，一般不需要用CLI，那么建议打开terminal直接安装在Mac上（windows可用git-bash），一把梭；</li>
 <li>如果是偏猿/媛取向，七叔掐指算您的环境一定比较复杂，Python/g++/JDK ···，现在为了搭博客再来个npm（js系玩家请忽略），233，<strong>推荐尝一下Vagrant吧</strong>。</li>
 </ul>
-<p>七叔估计，点开本篇的旁友们还是希望使用虚拟机进行部署的，因此选择问题就不展开讨论了。收！</p>
+<p>大概，点开本篇的旁友们，还是希望使用虚拟机进行部署的吧，本问题就不展开讨论了哈。收！</p>
 <br>
 
 <h2 id="Vagrant极简部署虚拟机"><a href="#Vagrant极简部署虚拟机" class="headerlink" title="Vagrant极简部署虚拟机"></a>Vagrant极简部署虚拟机</h2><p><a href="https://www.vagrantup.com" target="_blank" rel="noopener">Vagrant</a>是基于Ruby的虚拟机管理工具，比较推荐的组合是与<a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a>搭配，当这两个都安装完成后，执行如下几步简单的操作即可完成虚拟机部署：</p>
@@ -111,7 +111,7 @@
 <p>使用任意编辑器修改<code>Vagrantfile</code>文件（例如vim）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Vagrantfile</span><br></pre></td></tr></table></figure></p>
 <p>在<code>Vagrantfile</code>文件中配置内网地址（ip地址自定）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.91&quot;</span><br></pre></td></tr></table></figure></p>
 <p>其他配置项就按默认的即可，对于博客站本地环境来说完全够用。</p>
-<h3 id="3-启动虚拟机"><a href="#3-启动虚拟机" class="headerlink" title="3. 启动虚拟机"></a>3. 启动虚拟机</h3><p>虚拟机的启动也非常简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-启动虚拟机"><a href="#3-启动虚拟机" class="headerlink" title="3. 启动虚拟机"></a>3. 启动虚拟机</h3><p>非常简单的一条命令启动虚拟机：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up</span><br></pre></td></tr></table></figure></p>
 <p>由于Vagrant是基于box（可视为操作系统的镜像）来启动虚拟机，因此如果第一次启动，Vagrant会花费一定时间来下载这个box，当然我们也可以提前下载好，具体参阅<a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">官方box</a>。</p>
 <p>启动命令之后可以通过status命令检查启动状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant status</span><br></pre></td></tr></table></figure></p>
 <p>如果返回<code>running (virtualbox)</code>，就表示虚拟机已正常启动。</p>
@@ -121,33 +121,33 @@
 
 <h2 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h2><p>这一部分比较有针对性，是centos7的官方box在第一次启动后，对于搭建博客站来说可能会遇到的一些小问题，其他的Linux版本也许会有同样的问题，仅做参考。</p>
 <ul>
-<li><strong>必要软件缺失的问题</strong></li>
+<li><h4 id="必要软件缺失的问题"><a href="#必要软件缺失的问题" class="headerlink" title="必要软件缺失的问题"></a><strong>必要软件缺失的问题</strong></h4></li>
 </ul>
 <p>第一次启动的centos7，有很多软件未安装，repo源也没更新。为了方便后续的博客站搭建，七叔推荐执行以下操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo yum install -y net-tools git vim wget ntp</span><br></pre></td></tr></table></figure></p>
 <p>部分软件安装完成后需要重启，例如ntp服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart ntpd</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><strong>时区的问题</strong></li>
+<li><h4 id="时区的问题"><a href="#时区的问题" class="headerlink" title="时区的问题"></a><strong>时区的问题</strong></h4></li>
 </ul>
 <p>一般情况下，操作系统默认使用UTC，如果想调整到北京时间，可以执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure></p>
 <p>然后用<code>date</code>命令检查下时间是否调正确了。</p>
 <ul>
-<li><strong>中文显示异常的问题</strong></li>
+<li><h4 id="中文显示异常的问题"><a href="#中文显示异常的问题" class="headerlink" title="中文显示异常的问题"></a><strong>中文显示异常的问题</strong></h4></li>
 </ul>
 <p>当我们在创建博文的时候，文章的名称如果包含中文，默认情况下centos7的terminal会将这些中文显示成乱码。当然这个问题不会影响博文的正常显示，只不过可能会要了强迫症的命，233。要解决这个问题，只需安装相应的中文支持包即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install kde-l10n-Chinese</span><br><span class="line">sudo yum reinstall glibc-common</span><br></pre></td></tr></table></figure></p>
 <p>现在可以在terminal中看到正常的中文显示了，比如刚才的<code>date</code>命令就返回了中文显示的时间信息。</p>
 <ul>
-<li><strong>无法通过ssh命令远程登录的问题</strong></li>
+<li><h4 id="无法通过ssh命令远程登录的问题"><a href="#无法通过ssh命令远程登录的问题" class="headerlink" title="无法通过ssh命令远程登录的问题"></a><strong>无法通过ssh命令远程登录的问题</strong></h4></li>
 </ul>
 <p>这是centos7的初始安全策略，可以修改<code>/etc/ssh/sshd_config</code>文件的<code>PasswordAuthentication</code>参数为<code>yes</code>（默认为<code>no</code>）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure></p>
 <p>保存配置文件并重启sshd服务后就可以打开ssh远程登录功能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure></p>
 <p>centos7官方box带的初始账号密码都为<code>vagrant</code>，现在可以用该账号以及在初始化时配置的内网ip地址来测试验证ssh登录了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh vagrant@192.168.33.91</span><br><span class="line">vagrant@192.168.33.91&apos;s password: vagrant</span><br></pre></td></tr></table></figure></p>
 <hr>
-<br>
+<p>but in <strong>The End</strong>, it doesn’t even matter</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.marsbase.xyz/BLOG站搭建-番外-——服务器的准备.html" data-id="cjmj369kj00019qjbmsoi0a46" class="article-share-link">Share</a>
+      <a data-url="http://www.marsbase.xyz/BLOG站搭建-番外1-——服务器的准备.html" data-id="cjmx7vkdg0000z9jbc85qx3v6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +210,7 @@
       <ul>
         
           <li>
-            <a href="/BLOG站搭建-番外-——服务器的准备.html">BLOG站搭建(番外) ——服务器的准备</a>
+            <a href="/BLOG站搭建-番外1-——服务器的准备.html">BLOG站搭建(番外1) ——服务器的准备</a>
           </li>
         
           <li>
